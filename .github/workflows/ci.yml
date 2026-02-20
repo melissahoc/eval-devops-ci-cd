@@ -1,0 +1,20 @@
+name: CI Tests HTML
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  test-html:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Vérifier index.html
+        run: |
+          echo "Vérification index.html"
+          test -f index.html
+
+      - name: Afficher contenu
+        run: cat index.html
