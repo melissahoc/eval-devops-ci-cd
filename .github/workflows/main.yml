@@ -1,0 +1,22 @@
+name: CI Tests HTML
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test-html:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Check if index.html exists
+        run: |
+          if [ ! -f index.html ]; then
+            echo "index.html not found!"
+            exit 1
+          fi
+          echo "index.html found ✔"
